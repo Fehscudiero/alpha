@@ -106,7 +106,7 @@ export default function Hero({ whatsappNumber, whatsappMsg }: HeroProps) {
               Comparamos as melhores operadoras e entregamos a cotação certa para você em minutos.
             </p>
 
-            <div className="hero-btn-group" style={{ display: 'flex', gap: '.875rem', flexWrap: 'wrap' }}>
+            <div className="hero-btn-group">
               <a
                 href="#planos"
                 className="btn btn-primary btn-primary-lg btn-pulse"

@@ -49,6 +49,12 @@
       .skip-link{position:absolute;top:-100%;left:1rem;background:#1863DC;color:#fff;padding:.5rem 1rem;border-radius:0 0 .5rem .5rem;font-weight:700;z-index:9999;transition:top .2s}
       .skip-link:focus{top:0}
       #root{min-height:100vh}
+      /* CLS: reserva o espaço do main antes do React hidratar para evitar shift */
+      #main-content{min-height:100svh;display:block}
+      /* CLS: reserva o hero antes do bundle JS carregar */
+      .hero{min-height:100svh;background:linear-gradient(135deg,#003d7a 0%,#0056A7 50%,#1863DC 100%);display:flex;align-items:center;padding-top:9rem;contain:layout style}
+      /* CLS: strip-section com altura mínima garantida */
+      .strip-section{min-height:6rem;background:#f7f9fc;contain:paint;overflow:hidden}
     </style>
 
     <!-- Preconnect crítico — evita round-trips no critical path -->
