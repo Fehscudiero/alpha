@@ -46,6 +46,34 @@ const TRUST_ITEMS = [
   { text: 'Resposta em 15 min', icon: '⚡' },
 ]
 
+/**
+ * trackLead — disparo privado e silencioso para o webhook do Google Apps Script.
+ * Não bloqueia o UX, não lança erros visíveis, não interfere no fluxo do WhatsApp.
+ * A URL do endpoint vem do .env (VITE_LEAD_WEBHOOK) — nunca fica exposta no git.
+ */
+function trackLead(data: FormData): void {
+  const endpoint = import.meta.env.VITE_LEAD_WEBHOOK as string | undefined
+  if (!endpoint) return
+
+  const payload = {
+    nome:      data.name,
+    telefone:  data.phone,
+    email:     data.email,
+    plano:     data.plan,
+    origem:    window.location.href,
+    timestamp: new Date().toISOString(),
+    userAgent: navigator.userAgent,
+  }
+
+  // no-cors: evita erros de CORS no console e não expõe a URL em falhas visíveis
+  fetch(endpoint, {
+    method:  'POST',
+    mode:    'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body:    JSON.stringify(payload),
+  }).catch(() => { /* silencia falhas de rede */ })
+}
+
 export default function Hero({ whatsappNumber, whatsappMsg }: HeroProps) {
   const fid = useId()
   const [isPending, startTransition] = useTransition()
@@ -70,6 +98,10 @@ export default function Hero({ whatsappNumber, whatsappMsg }: HeroProps) {
       formRef.current?.querySelector<HTMLElement>(`[name="${first}"]`)?.focus()
       return
     }
+
+    // Rastreamento privado — disparo silencioso antes de qualquer outra ação
+    trackLead(form)
+
     startTransition(() => setSubmitted(true))
     const msg = encodeURIComponent(
       `Olá! Vim pelo site e quero cotar um plano de saúde.\nNome: ${form.name}\nTel: ${form.phone}\nEmail: ${form.email}\nTipo: ${form.plan}`
