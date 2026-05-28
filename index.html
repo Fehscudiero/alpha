@@ -132,35 +132,26 @@
     }
     </script>
 
-    <!-- Google Tag (gtag.js) - Otimizado para Core Web Vitals (Lighthouse 100/100) -->
+    <!-- Google Tag (gtag.js) — AW-18191984976 + GT-M6BP6ZPN -->
+    <!-- async no <script> garante não-bloqueio sem perder a validação do Tag Assistant -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6BP6ZPN"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+
+      /* Google Analytics 4 (GT-M6BP6ZPN) com cross-domain tracking */
+      gtag('config', 'GT-M6BP6ZPN', {
+        linker: {
+          domains: [
+            'alphaconvenios.com.br',
+            'alphaconvenios-pkjojy2cc-fehscudieros-projects.vercel.app'
+          ]
+        }
+      });
+
+      /* Google Ads (AW-18191984976) */
       gtag('config', 'AW-18191984976');
-
-      (function() {
-        let loaded = false;
-        function loadGtag() {
-          if (loaded) return;
-          loaded = true;
-          const events = ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'];
-          events.forEach(e => window.removeEventListener(e, loadGtag));
-
-          const s = document.createElement('script');
-          s.async = true;
-          s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18191984976';
-          document.head.appendChild(s);
-        }
-        const events = ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'];
-        events.forEach(e => window.addEventListener(e, loadGtag, { passive: true }));
-
-        if (typeof window.requestIdleCallback !== 'undefined') {
-          window.requestIdleCallback(() => setTimeout(loadGtag, 3500));
-        } else {
-          setTimeout(loadGtag, 4000);
-        }
-      })();
     </script>
   </head>
   <body>
