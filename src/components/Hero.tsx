@@ -2,6 +2,9 @@ import React, { useRef, useState, useTransition, useId } from 'react'
 import { ArrowRight, Lock, CheckCircle2 } from 'lucide-react'
 import HighlightWord from './HighlightWord'
 
+// Declaração global do gtag injetado no index.html (Google Ads / GA4)
+declare function gtag(...args: unknown[]): void
+
 interface HeroProps {
   whatsappNumber: string
   whatsappMsg: string
@@ -101,6 +104,14 @@ export default function Hero({ whatsappNumber, whatsappMsg }: HeroProps) {
 
     // Rastreamento privado — disparo silencioso antes de qualquer outra ação
     trackLead(form)
+
+    // Google Ads — evento de conversão "Enviar formulário de lead"
+    // queueMicrotask garante que o disparo não bloqueia o INP (< 100ms)
+    queueMicrotask(() => {
+      try {
+        gtag('event', 'conversion', { send_to: 'AW-18191984976/fseBCKKq-bwcENDSzuJD' })
+      } catch (_) { /* silencia se gtag não estiver disponível */ }
+    })
 
     startTransition(() => setSubmitted(true))
     const msg = encodeURIComponent(
