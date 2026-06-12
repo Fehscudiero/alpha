@@ -2,15 +2,6 @@ import React, { useRef, useState, useTransition, useId } from 'react'
 import { ArrowRight, Lock, CheckCircle2 } from 'lucide-react'
 import HighlightWord from './HighlightWord'
 
-/** Dispara evento de conversão do Google Ads de forma segura */
-function fireGAdsConversion(sendTo: string): void {
-  // Acesso via window evita que o Rollup/Vite faça tree-shaking do gtag global
-  const gtagFn = (window as unknown as Record<string, unknown>)['gtag']
-  if (typeof gtagFn === 'function') {
-    (gtagFn as (...a: unknown[]) => void)('event', 'conversion', { send_to: sendTo })
-  }
-}
-
 interface HeroProps {
   whatsappNumber: string
   whatsappMsg: string
@@ -111,9 +102,18 @@ export default function Hero({ whatsappNumber, whatsappMsg }: HeroProps) {
     // Rastreamento privado — disparo silencioso antes de qualquer outra ação
     trackLead(form)
 
-    // Google Ads — evento de conversão "Enviar formulário de lead"
-    // queueMicrotask garante que o disparo não bloqueia o INP (< 100ms)
-    queueMicrotask(() => fireGAdsConversion('AW-18191984976/fseBCKKq-bwcENDSzuJD'))
+    // Google Ads — evento de conversão via função global do index.html
+    // window.alphaReportQuoteConversion é definida no script nativo do index.html
+    // com proteção contra disparo duplo (flag fired) e fallback de evento
+    queueMicrotask(() => {
+      const fn = (window as unknown as Record<string, unknown>)['alphaReportQuoteConversion']
+      if (typeof fn === 'function') {
+        (fn as () => void)()
+      } else {
+        // Fallback: dispara via CustomEvent caso o script ainda não tenha carregado
+        window.dispatchEvent(new Event('alpha:quote-submit-success'))
+      }
+    })
 
     startTransition(() => setSubmitted(true))
     const msg = encodeURIComponent(
