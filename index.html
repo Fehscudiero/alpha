@@ -383,25 +383,26 @@
     </script>
 
     <!--
-      Google Ads conversion event — Enviar formulário de lead (2)
+      Google Ads conversion event — Solicitar cotação
 
       IMPORTANTE:
-      Este script NÃO mede clique.
+      Este script NÃO dispara conversão no carregamento da página.
+      Este script NÃO mede clique genérico.
       Este script NÃO tenta entender o formulário.
       Este script NÃO captura nome, telefone, e-mail ou qualquer campo.
 
       Ele só cria uma função global:
-      window.alphaReportLeadConversion()
+      window.alphaReportQuoteConversion()
 
-      Você deve chamar essa função no React SOMENTE depois que o lead for enviado com sucesso.
+      Você deve chamar essa função no React SOMENTE depois que a cotação/lead for enviada com sucesso.
     -->
     <script>
       (function () {
-        const CONVERSION_SEND_TO = "AW-18191984976/fseBCKKq-bwcENDSzuJD";
+        const CONVERSION_SEND_TO = "AW-18191984976/s5IICIvg970cENDSzuJD";
 
         let fired = false;
 
-        function sendLeadConversion() {
+        function sendQuoteConversion() {
           if (fired) return false;
 
           if (typeof window.gtag !== "function") {
@@ -415,14 +416,16 @@
 
           window.gtag("event", "conversion", {
             send_to: CONVERSION_SEND_TO,
+            value: 1.0,
+            currency: "BRL",
 
             /*
-              Ajuda em cenários onde existe redirecionamento logo após o envio.
+              Ajuda se houver redirecionamento logo após o envio.
               Se não houver redirecionamento, não atrapalha.
             */
             event_callback: function () {
               console.info(
-                "[Google Ads] Conversão confirmada:",
+                "[Google Ads] Conversão Solicitar cotação confirmada:",
                 CONVERSION_SEND_TO,
               );
             },
@@ -430,23 +433,40 @@
             event_timeout: 2000,
           });
 
-          console.info("[Google Ads] Conversão enviada:", CONVERSION_SEND_TO);
+          console.info(
+            "[Google Ads] Conversão Solicitar cotação enviada:",
+            CONVERSION_SEND_TO,
+          );
 
           return true;
         }
 
         /*
           Chamada direta recomendada dentro do React:
-          window.alphaReportLeadConversion?.()
+          window.alphaReportQuoteConversion?.()
         */
-        window.alphaReportLeadConversion = sendLeadConversion;
+        window.alphaReportQuoteConversion = sendQuoteConversion;
 
         /*
-          Alternativa recomendada se você preferir desacoplar o React do gtag:
+          Mantive este alias para compatibilidade com o código anterior,
+          caso você já tenha implementado window.alphaReportLeadConversion().
+        */
+        window.alphaReportLeadConversion = sendQuoteConversion;
+
+        /*
+          Alternativa desacoplada:
+          window.dispatchEvent(new Event("alpha:quote-submit-success"))
+        */
+        window.addEventListener("alpha:quote-submit-success", function () {
+          sendQuoteConversion();
+        });
+
+        /*
+          Alias do evento anterior, caso você já tenha usado:
           window.dispatchEvent(new Event("alpha:lead-submit-success"))
         */
         window.addEventListener("alpha:lead-submit-success", function () {
-          sendLeadConversion();
+          sendQuoteConversion();
         });
       })();
     </script>
@@ -476,7 +496,10 @@
       rel="preload"
       as="style"
       href="/assets/index-wk5-Y1rq.css"
-      onload="this.onload=null;this.rel='stylesheet'"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
     />
     <noscript>
       <link rel="stylesheet" href="/assets/index-wk5-Y1rq.css" />
