@@ -2,59 +2,221 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    <meta name="description" content="Alpha Convênios — planos de saúde individuais, familiares e empresariais com cotação grátis em 5 minutos. Atendimento humanizado, suporte pós-venda e as melhores operadoras." />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
+    />
+    <meta
+      name="description"
+      content="Alpha Convênios — planos de saúde individuais, familiares e empresariais com cotação grátis em 5 minutos. Atendimento humanizado, suporte pós-venda e as melhores operadoras."
+    />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#0056A7" />
     <meta name="author" content="Alpha Convênios" />
     <link rel="canonical" href="https://alphaconvenios.com.br/" />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type"        content="website" />
-    <meta property="og:url"         content="https://innovat-rho.vercel.app/" />
-    <meta property="og:title"       content="Alpha Convênios — Planos de Saúde com Cotação Grátis em 5 Minutos" />
-    <meta property="og:description" content="Comparamos Alice, SulAmérica, Unimed, Hapvida, Amil e mais. Cotação gratuita em 5 minutos, atendimento humanizado e suporte pós-venda completo." />
-    <meta property="og:image"       content="https://innovat-rho.vercel.app/whatsapp.png" />
-    <meta property="og:image:type"  content="image/png" />
-    <meta property="og:locale"      content="pt_BR" />
-    <meta property="og:site_name"   content="Alpha Convênios" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://innovat-rho.vercel.app/" />
+    <meta
+      property="og:title"
+      content="Alpha Convênios — Planos de Saúde com Cotação Grátis em 5 Minutos"
+    />
+    <meta
+      property="og:description"
+      content="Comparamos Alice, SulAmérica, Unimed, Hapvida, Amil e mais. Cotação gratuita em 5 minutos, atendimento humanizado e suporte pós-venda completo."
+    />
+    <meta
+      property="og:image"
+      content="https://innovat-rho.vercel.app/whatsapp.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Alpha Convênios" />
 
     <!-- Twitter Card -->
-    <meta name="twitter:card"        content="summary_large_image" />
-    <meta name="twitter:title"       content="Alpha Convênios — Planos de Saúde" />
-    <meta name="twitter:description" content="Cotação gratuita em 5 minutos. As melhores operadoras comparadas para você." />
-    <meta name="twitter:image"       content="https://innovat-rho.vercel.app/whatsapp.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Alpha Convênios — Planos de Saúde" />
+    <meta
+      name="twitter:description"
+      content="Cotação gratuita em 5 minutos. As melhores operadoras comparadas para você."
+    />
+    <meta
+      name="twitter:image"
+      content="https://innovat-rho.vercel.app/whatsapp.png"
+    />
 
     <!-- Critical CSS inline — elimina render-blocking (PageSpeed) -->
     <!-- Cobre apenas o above-the-fold: nav, hero-layout, tokens e base -->
     <style>
-      :root{--brand-primary:#0056A7;--brand-dark:#003d7a;--brand-mid:#1863DC;--accent-cta:#1863DC;--accent-cta-h:#0e4db5;--text-dark:#1a1a2e;--text-body:#3d3d5c;--bg-white:#ffffff;--trans-fast:180ms cubic-bezier(.4,0,.2,1);--trans-med:320ms cubic-bezier(.4,0,.2,1)}
-      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-      html{scroll-behavior:smooth;font-size:16px;-webkit-text-size-adjust:100%}
-      body{font-family:'Manrope','Inter',system-ui,sans-serif;background-color:#fff;color:#1a1a2e;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-      img,video{display:block;max-width:100%}
-      a{color:inherit;text-decoration:none}
-      button{cursor:pointer;font-family:inherit;border:none;background:none}
-      h1,h2,h3,h4{font-family:'Montserrat','Manrope',sans-serif;font-weight:700;line-height:1.15;color:#1a1a2e;letter-spacing:-.02em}
-      .container{width:100%;max-width:1200px;margin-inline:auto;padding-inline:1rem}
-      @media(min-width:640px){.container{padding-inline:1.5rem}}
-      @media(min-width:1024px){.container{padding-inline:2rem}}
-      .nav{position:fixed;top:0;left:0;right:0;z-index:200;padding-block:.875rem;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:background var(--trans-med),box-shadow var(--trans-med)}
-      .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-      .nav-logo{display:flex;align-items:center;gap:.625rem}
-      .nav-logo img{height:80px;width:auto;aspect-ratio:300/90;object-fit:contain}
-      .nav-mobile-btn{display:flex;color:#1a1a2e;transition:color var(--trans-fast);padding:.25rem}
-      .nav-links-desktop{display:none;align-items:center;gap:2.5rem}
-      @media(min-width:1024px){.nav-links-desktop{display:flex}.nav-mobile-btn{display:none}}
-      .skip-link{position:absolute;top:-100%;left:1rem;background:#1863DC;color:#fff;padding:.5rem 1rem;border-radius:0 0 .5rem .5rem;font-weight:700;z-index:9999;transition:top .2s}
-      .skip-link:focus{top:0}
-      #root{min-height:100vh}
+      :root {
+        --brand-primary: #0056a7;
+        --brand-dark: #003d7a;
+        --brand-mid: #1863dc;
+        --accent-cta: #1863dc;
+        --accent-cta-h: #0e4db5;
+        --text-dark: #1a1a2e;
+        --text-body: #3d3d5c;
+        --bg-white: #ffffff;
+        --trans-fast: 180ms cubic-bezier(0.4, 0, 0.2, 1);
+        --trans-med: 320ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        font-family: "Manrope", "Inter", system-ui, sans-serif;
+        background-color: #fff;
+        color: #1a1a2e;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      img,
+      video {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        cursor: pointer;
+        font-family: inherit;
+        border: none;
+        background: none;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Montserrat", "Manrope", sans-serif;
+        font-weight: 700;
+        line-height: 1.15;
+        color: #1a1a2e;
+        letter-spacing: -0.02em;
+      }
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin-inline: auto;
+        padding-inline: 1rem;
+      }
+      @media (min-width: 640px) {
+        .container {
+          padding-inline: 1.5rem;
+        }
+      }
+      @media (min-width: 1024px) {
+        .container {
+          padding-inline: 2rem;
+        }
+      }
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 200;
+        padding-block: 0.875rem;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid transparent;
+        transition:
+          background var(--trans-med),
+          box-shadow var(--trans-med);
+      }
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
+      }
+      .nav-logo img {
+        height: 80px;
+        width: auto;
+        aspect-ratio: 300/90;
+        object-fit: contain;
+      }
+      .nav-mobile-btn {
+        display: flex;
+        color: #1a1a2e;
+        transition: color var(--trans-fast);
+        padding: 0.25rem;
+      }
+      .nav-links-desktop {
+        display: none;
+        align-items: center;
+        gap: 2.5rem;
+      }
+      @media (min-width: 1024px) {
+        .nav-links-desktop {
+          display: flex;
+        }
+        .nav-mobile-btn {
+          display: none;
+        }
+      }
+      .skip-link {
+        position: absolute;
+        top: -100%;
+        left: 1rem;
+        background: #1863dc;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 0 0 0.5rem 0.5rem;
+        font-weight: 700;
+        z-index: 9999;
+        transition: top 0.2s;
+      }
+      .skip-link:focus {
+        top: 0;
+      }
+      #root {
+        min-height: 100vh;
+      }
       /* CLS: reserva o espaço do main antes do React hidratar para evitar shift */
-      #main-content{min-height:100svh;display:block}
+      #main-content {
+        min-height: 100svh;
+        display: block;
+      }
       /* CLS: reserva o hero antes do bundle JS carregar */
-      .hero{min-height:100svh;background:linear-gradient(135deg,#003d7a 0%,#0056A7 50%,#1863DC 100%);display:flex;align-items:center;padding-top:9rem;contain:layout style}
+      .hero {
+        min-height: 100svh;
+        background: linear-gradient(
+          135deg,
+          #003d7a 0%,
+          #0056a7 50%,
+          #1863dc 100%
+        );
+        display: flex;
+        align-items: center;
+        padding-top: 9rem;
+        contain: layout style;
+      }
       /* CLS: strip-section com altura mínima garantida */
-      .strip-section{min-height:6rem;background:#f7f9fc;contain:paint;overflow:hidden}
+      .strip-section {
+        min-height: 6rem;
+        background: #f7f9fc;
+        contain: paint;
+        overflow: hidden;
+      }
     </style>
 
     <!-- Preconnect crítico — evita round-trips no critical path -->
@@ -66,7 +228,10 @@
       rel="preload"
       as="style"
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800;900&family=Montserrat:wght@700;800;900&display=swap"
-      onload="this.onload=null;this.rel='stylesheet'"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
     />
     <noscript>
       <link
@@ -84,74 +249,102 @@
       fetchpriority="high"
     />
 
-    <title>Alpha Convênios — Planos de Saúde com Cotação Grátis em 5 Minutos</title>
+    <title>
+      Alpha Convênios — Planos de Saúde com Cotação Grátis em 5 Minutos
+    </title>
     <link rel="icon" type="image/webp" href="/icone.webp" />
 
     <!-- JSON-LD Schema: LocalBusiness + HealthService -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "LocalBusiness",
-          "@id": "https://alphaconvenios.com.br/#organization",
-          "name": "Alpha Convênios",
-          "description": "Corretora de planos de saúde independente. Comparamos as melhores operadoras para você.",
-          "url": "https://alphaconvenios.com.br/",
-          "telephone": "+55-11-99999-9999",
-          "email": "contato@alphaconvenios.com.br",
-          "priceRange": "$$",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "São Paulo",
-            "addressRegion": "SP",
-            "addressCountry": "BR"
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "LocalBusiness",
+            "@id": "https://alphaconvenios.com.br/#organization",
+            "name": "Alpha Convênios",
+            "description": "Corretora de planos de saúde independente. Comparamos as melhores operadoras para você.",
+            "url": "https://alphaconvenios.com.br/",
+            "telephone": "+55-11-99999-9999",
+            "email": "contato@alphaconvenios.com.br",
+            "priceRange": "$$",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "São Paulo",
+              "addressRegion": "SP",
+              "addressCountry": "BR"
+            },
+            "areaServed": "BR",
+            "sameAs": [],
+            "hasMap": "https://maps.google.com/?q=São+Paulo,+SP"
           },
-          "areaServed": "BR",
-          "sameAs": [],
-          "hasMap": "https://maps.google.com/?q=São+Paulo,+SP"
-        },
-        {
-          "@type": "WebPage",
-          "@id": "https://alphaconvenios.com.br/#webpage",
-          "url": "https://alphaconvenios.com.br/",
-          "name": "Alpha Convênios — Planos de Saúde com Cotação Grátis em 5 Minutos",
-          "description": "Planos de saúde individuais, familiares e empresariais. Cotação grátis e atendimento humanizado.",
-          "inLanguage": "pt-BR",
-          "isPartOf": { "@id": "https://alphaconvenios.com.br/#organization" }
-        },
-        {
-          "@type": "FAQPage",
-          "mainEntity": [
-            { "@type": "Question", "name": "Existe período de carência nos planos?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. Urgências têm carência máxima de 24h, partos a termo 300 dias e demais até 180 dias." } },
-            { "@type": "Question", "name": "O que é coparticipação?", "acceptedAnswer": { "@type": "Answer", "text": "Coparticipação é um modelo onde você paga uma porcentagem por consulta ou exame. Reduz a mensalidade." } },
-            { "@type": "Question", "name": "Como funcionam os reajustes anuais?", "acceptedAnswer": { "@type": "Answer", "text": "Planos individuais e familiares possuem reajuste anual regulado pela ANS. Já os planos empresariais seguem critérios definidos pelas operadoras conforme contrato, utilização e faixa de beneficiários. Nossa equipe acompanha cada caso e auxilia na melhor análise de custo-benefício para sua empresa." } }
-          ]
-        }
-      ]
-    }
+          {
+            "@type": "WebPage",
+            "@id": "https://alphaconvenios.com.br/#webpage",
+            "url": "https://alphaconvenios.com.br/",
+            "name": "Alpha Convênios — Planos de Saúde com Cotação Grátis em 5 Minutos",
+            "description": "Planos de saúde individuais, familiares e empresariais. Cotação grátis e atendimento humanizado.",
+            "inLanguage": "pt-BR",
+            "isPartOf": { "@id": "https://alphaconvenios.com.br/#organization" }
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Existe período de carência nos planos?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sim. Urgências têm carência máxima de 24h, partos a termo 300 dias e demais até 180 dias."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "O que é coparticipação?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Coparticipação é um modelo onde você paga uma porcentagem por consulta ou exame. Reduz a mensalidade."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Como funcionam os reajustes anuais?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Planos individuais e familiares possuem reajuste anual regulado pela ANS. Já os planos empresariais seguem critérios definidos pelas operadoras conforme contrato, utilização e faixa de beneficiários. Nossa equipe acompanha cada caso e auxilia na melhor análise de custo-benefício para sua empresa."
+                }
+              }
+            ]
+          }
+        ]
+      }
     </script>
 
     <!-- Google Tag (gtag.js) — AW-18191984976 + GT-M6BP6ZPN -->
     <!-- async no <script> garante não-bloqueio sem perder a validação do Tag Assistant -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6BP6ZPN"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=GT-M6BP6ZPN"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
       /* Google Analytics 4 (GT-M6BP6ZPN) com cross-domain tracking */
-      gtag('config', 'GT-M6BP6ZPN', {
+      gtag("config", "GT-M6BP6ZPN", {
         linker: {
           domains: [
-            'alphaconvenios.com.br',
-            'alphaconvenios-pkjojy2cc-fehscudieros-projects.vercel.app'
-          ]
-        }
+            "alphaconvenios.com.br",
+            "alphaconvenios-pkjojy2cc-fehscudieros-projects.vercel.app",
+          ],
+        },
       });
 
       /* Google Ads (AW-18191984976) */
-      gtag('config', 'AW-18191984976');
+      gtag("event", "AW-18191984976");
     </script>
   </head>
   <body>
