@@ -320,31 +320,177 @@
       }
     </script>
 
-    <!-- Google Tag (gtag.js) — AW-18191984976 + GT-M6BP6ZPN -->
-    <!-- async no <script> garante não-bloqueio sem perder a validação do Tag Assistant -->
+    <!-- Google tag (gtag.js) — Google Ads + Google Tag -->
     <script
       async
-      src="https://www.googletagmanager.com/gtag/js?id=GT-M6BP6ZPN"
+      src="https://www.googletagmanager.com/gtag/js?id=AW-18191984976"
     ></script>
+
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
+      window.gtag = window.gtag || gtag;
+
       gtag("js", new Date());
 
-      /* Google Analytics 4 (GT-M6BP6ZPN) com cross-domain tracking */
-      gtag("config", "GT-M6BP6ZPN", {
-        linker: {
-          domains: [
-            "alphaconvenios.com.br",
-            "alphaconvenios-pkjojy2cc-fehscudieros-projects.vercel.app",
-          ],
-        },
+      /*
+        Cross-domain tracking.
+        Aplica o linker antes dos configs.
+      */
+      gtag("set", "linker", {
+        domains: [
+          "alphaconvenios.com.br",
+          "alphaconvenios-pkjojy2cc-fehscudieros-projects.vercel.app",
+        ],
       });
 
-      /* Google Ads (AW-18191984976) */
-      gtag("event", "AW-18191984976");
+      /*
+        Tag base do Google Ads.
+        Isso instala a tag, mas NÃO dispara conversão sozinho.
+      */
+      gtag("config", "AW-18191984976");
+
+      /*
+        Mantendo seu Google Tag / Analytics atual.
+      */
+      gtag("config", "GT-M6BP6ZPN");
+    </script>
+
+    <!-- Google Ads conversion event — Enviar formulário de lead (2) -->
+    <script>
+      (function () {
+        const CONVERSION_SEND_TO = "AW-18191984976/fseBCKKq-bwcENDSzuJD";
+        const CTA_TEXT = "quero minha cotação grátis";
+
+        let fired = false;
+
+        function normalizeText(value) {
+          return String(value || "")
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/\s+/g, " ")
+            .trim()
+            .toLowerCase();
+        }
+
+        function getText(element) {
+          if (!element) return "";
+
+          if (
+            element.tagName === "INPUT" &&
+            (element.type === "submit" || element.type === "button")
+          ) {
+            return element.value || "";
+          }
+
+          return element.innerText || element.textContent || "";
+        }
+
+        function isTargetButton(element) {
+          if (!element) return false;
+          return normalizeText(getText(element)).includes(
+            normalizeText(CTA_TEXT),
+          );
+        }
+
+        function isDisabled(element) {
+          if (!element) return false;
+
+          return (
+            element.disabled === true ||
+            element.getAttribute("aria-disabled") === "true" ||
+            element.classList.contains("disabled")
+          );
+        }
+
+        function isValidForm(form) {
+          if (!form) return true;
+
+          if (typeof form.checkValidity === "function") {
+            return form.checkValidity();
+          }
+
+          return true;
+        }
+
+        function sendLeadConversion() {
+          if (fired) return;
+          fired = true;
+
+          if (typeof window.gtag !== "function") {
+            console.warn(
+              "[Google Ads] gtag não encontrado. Conversão não enviada.",
+            );
+            return;
+          }
+
+          window.gtag("event", "conversion", {
+            send_to: CONVERSION_SEND_TO,
+          });
+
+          console.info("[Google Ads] Conversão enviada:", CONVERSION_SEND_TO);
+        }
+
+        /*
+          Função global opcional.
+          Se o dev quiser chamar direto no React depois:
+          window.alphaReportLeadConversion()
+        */
+        window.alphaReportLeadConversion = sendLeadConversion;
+
+        /*
+          Caso o formulário use submit HTML nativo.
+        */
+        document.addEventListener(
+          "submit",
+          function (event) {
+            const form = event.target;
+
+            if (!(form instanceof HTMLFormElement)) return;
+            if (!isValidForm(form)) return;
+
+            const buttons = form.querySelectorAll(
+              'button, input[type="submit"], input[type="button"], a, [role="button"]',
+            );
+
+            const hasTargetButton = Array.from(buttons).some(isTargetButton);
+
+            if (!hasTargetButton) return;
+
+            sendLeadConversion();
+          },
+          true,
+        );
+
+        /*
+          Caso o React trate o envio pelo clique no botão.
+        */
+        document.addEventListener(
+          "click",
+          function (event) {
+            const clicked = event.target;
+
+            if (!(clicked instanceof Element)) return;
+
+            const button = clicked.closest(
+              'button, input[type="submit"], input[type="button"], a, [role="button"]',
+            );
+
+            if (!button) return;
+            if (!isTargetButton(button)) return;
+            if (isDisabled(button)) return;
+
+            const form = button.closest("form");
+
+            if (!isValidForm(form)) return;
+
+            sendLeadConversion();
+          },
+          true,
+        );
+      })();
     </script>
   </head>
   <body>
