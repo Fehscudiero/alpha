@@ -17,7 +17,7 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://innovat-rho.vercel.app/" />
+    <meta property="og:url" content="https://alphaconvenios.com.br/" />
     <meta
       property="og:title"
       content="Alpha Convênios — Planos de Saúde com Cotação Grátis em 5 Minutos"
@@ -28,7 +28,7 @@
     />
     <meta
       property="og:image"
-      content="https://innovat-rho.vercel.app/whatsapp.png"
+      content="https://alphaconvenios.com.br/whatsapp.png"
     />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:locale" content="pt_BR" />
@@ -43,11 +43,10 @@
     />
     <meta
       name="twitter:image"
-      content="https://innovat-rho.vercel.app/whatsapp.png"
+      content="https://alphaconvenios.com.br/whatsapp.png"
     />
 
     <!-- Critical CSS inline — elimina render-blocking (PageSpeed) -->
-    <!-- Cobre apenas o above-the-fold: nav, hero-layout, tokens e base -->
     <style>
       :root {
         --brand-primary: #0056a7;
@@ -61,6 +60,7 @@
         --trans-fast: 180ms cubic-bezier(0.4, 0, 0.2, 1);
         --trans-med: 320ms cubic-bezier(0.4, 0, 0.2, 1);
       }
+
       *,
       *::before,
       *::after {
@@ -68,11 +68,13 @@
         margin: 0;
         padding: 0;
       }
+
       html {
         scroll-behavior: smooth;
         font-size: 16px;
         -webkit-text-size-adjust: 100%;
       }
+
       body {
         font-family: "Manrope", "Inter", system-ui, sans-serif;
         background-color: #fff;
@@ -81,21 +83,25 @@
         -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
       }
+
       img,
       video {
         display: block;
         max-width: 100%;
       }
+
       a {
         color: inherit;
         text-decoration: none;
       }
+
       button {
         cursor: pointer;
         font-family: inherit;
         border: none;
         background: none;
       }
+
       h1,
       h2,
       h3,
@@ -106,22 +112,26 @@
         color: #1a1a2e;
         letter-spacing: -0.02em;
       }
+
       .container {
         width: 100%;
         max-width: 1200px;
         margin-inline: auto;
         padding-inline: 1rem;
       }
+
       @media (min-width: 640px) {
         .container {
           padding-inline: 1.5rem;
         }
       }
+
       @media (min-width: 1024px) {
         .container {
           padding-inline: 2rem;
         }
       }
+
       .nav {
         position: fixed;
         top: 0;
@@ -137,42 +147,50 @@
           background var(--trans-med),
           box-shadow var(--trans-med);
       }
+
       .nav-inner {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 1rem;
       }
+
       .nav-logo {
         display: flex;
         align-items: center;
         gap: 0.625rem;
       }
+
       .nav-logo img {
         height: 80px;
         width: auto;
         aspect-ratio: 300/90;
         object-fit: contain;
       }
+
       .nav-mobile-btn {
         display: flex;
         color: #1a1a2e;
         transition: color var(--trans-fast);
         padding: 0.25rem;
       }
+
       .nav-links-desktop {
         display: none;
         align-items: center;
         gap: 2.5rem;
       }
+
       @media (min-width: 1024px) {
         .nav-links-desktop {
           display: flex;
         }
+
         .nav-mobile-btn {
           display: none;
         }
       }
+
       .skip-link {
         position: absolute;
         top: -100%;
@@ -185,18 +203,20 @@
         z-index: 9999;
         transition: top 0.2s;
       }
+
       .skip-link:focus {
         top: 0;
       }
+
       #root {
         min-height: 100vh;
       }
-      /* CLS: reserva o espaço do main antes do React hidratar para evitar shift */
+
       #main-content {
         min-height: 100svh;
         display: block;
       }
-      /* CLS: reserva o hero antes do bundle JS carregar */
+
       .hero {
         min-height: 100svh;
         background: linear-gradient(
@@ -210,7 +230,7 @@
         padding-top: 9rem;
         contain: layout style;
       }
-      /* CLS: strip-section com altura mínima garantida */
+
       .strip-section {
         min-height: 6rem;
         background: #f7f9fc;
@@ -219,11 +239,11 @@
       }
     </style>
 
-    <!-- Preconnect crítico — evita round-trips no critical path -->
+    <!-- Preconnect crítico -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Fonts: apenas os pesos utilizados, display=swap para evitar FOIT -->
+    <!-- Fonts -->
     <link
       rel="preload"
       as="style"
@@ -240,7 +260,7 @@
       />
     </noscript>
 
-    <!-- Preload do logo — crítico para LCP -->
+    <!-- Preload do logo -->
     <link
       rel="preload"
       as="image"
@@ -285,7 +305,9 @@
             "name": "Alpha Convênios — Planos de Saúde com Cotação Grátis em 5 Minutos",
             "description": "Planos de saúde individuais, familiares e empresariais. Cotação grátis e atendimento humanizado.",
             "inLanguage": "pt-BR",
-            "isPartOf": { "@id": "https://alphaconvenios.com.br/#organization" }
+            "isPartOf": {
+              "@id": "https://alphaconvenios.com.br/#organization"
+            }
           },
           {
             "@type": "FAQPage",
@@ -328,9 +350,11 @@
 
     <script>
       window.dataLayer = window.dataLayer || [];
+
       function gtag() {
-        dataLayer.push(arguments);
+        window.dataLayer.push(arguments);
       }
+
       window.gtag = window.gtag || gtag;
 
       gtag("js", new Date());
@@ -358,145 +382,110 @@
       gtag("config", "GT-M6BP6ZPN");
     </script>
 
-    <!-- Google Ads conversion event — Enviar formulário de lead (2) -->
+    <!--
+      Google Ads conversion event — Enviar formulário de lead (2)
+
+      IMPORTANTE:
+      Este script NÃO mede clique.
+      Este script NÃO tenta entender o formulário.
+      Este script NÃO captura nome, telefone, e-mail ou qualquer campo.
+
+      Ele só cria uma função global:
+      window.alphaReportLeadConversion()
+
+      Você deve chamar essa função no React SOMENTE depois que o lead for enviado com sucesso.
+    -->
     <script>
       (function () {
         const CONVERSION_SEND_TO = "AW-18191984976/fseBCKKq-bwcENDSzuJD";
-        const CTA_TEXT = "quero minha cotação grátis";
 
         let fired = false;
 
-        function normalizeText(value) {
-          return String(value || "")
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .replace(/\s+/g, " ")
-            .trim()
-            .toLowerCase();
-        }
-
-        function getText(element) {
-          if (!element) return "";
-
-          if (
-            element.tagName === "INPUT" &&
-            (element.type === "submit" || element.type === "button")
-          ) {
-            return element.value || "";
-          }
-
-          return element.innerText || element.textContent || "";
-        }
-
-        function isTargetButton(element) {
-          if (!element) return false;
-          return normalizeText(getText(element)).includes(
-            normalizeText(CTA_TEXT),
-          );
-        }
-
-        function isDisabled(element) {
-          if (!element) return false;
-
-          return (
-            element.disabled === true ||
-            element.getAttribute("aria-disabled") === "true" ||
-            element.classList.contains("disabled")
-          );
-        }
-
-        function isValidForm(form) {
-          if (!form) return true;
-
-          if (typeof form.checkValidity === "function") {
-            return form.checkValidity();
-          }
-
-          return true;
-        }
-
         function sendLeadConversion() {
-          if (fired) return;
-          fired = true;
+          if (fired) return false;
 
           if (typeof window.gtag !== "function") {
             console.warn(
               "[Google Ads] gtag não encontrado. Conversão não enviada.",
             );
-            return;
+            return false;
           }
+
+          fired = true;
 
           window.gtag("event", "conversion", {
             send_to: CONVERSION_SEND_TO,
+
+            /*
+              Ajuda em cenários onde existe redirecionamento logo após o envio.
+              Se não houver redirecionamento, não atrapalha.
+            */
+            event_callback: function () {
+              console.info(
+                "[Google Ads] Conversão confirmada:",
+                CONVERSION_SEND_TO,
+              );
+            },
+
+            event_timeout: 2000,
           });
 
           console.info("[Google Ads] Conversão enviada:", CONVERSION_SEND_TO);
+
+          return true;
         }
 
         /*
-          Função global opcional.
-          Se o dev quiser chamar direto no React depois:
-          window.alphaReportLeadConversion()
+          Chamada direta recomendada dentro do React:
+          window.alphaReportLeadConversion?.()
         */
         window.alphaReportLeadConversion = sendLeadConversion;
 
         /*
-          Caso o formulário use submit HTML nativo.
+          Alternativa recomendada se você preferir desacoplar o React do gtag:
+          window.dispatchEvent(new Event("alpha:lead-submit-success"))
         */
-        document.addEventListener(
-          "submit",
-          function (event) {
-            const form = event.target;
-
-            if (!(form instanceof HTMLFormElement)) return;
-            if (!isValidForm(form)) return;
-
-            const buttons = form.querySelectorAll(
-              'button, input[type="submit"], input[type="button"], a, [role="button"]',
-            );
-
-            const hasTargetButton = Array.from(buttons).some(isTargetButton);
-
-            if (!hasTargetButton) return;
-
-            sendLeadConversion();
-          },
-          true,
-        );
-
-        /*
-          Caso o React trate o envio pelo clique no botão.
-        */
-        document.addEventListener(
-          "click",
-          function (event) {
-            const clicked = event.target;
-
-            if (!(clicked instanceof Element)) return;
-
-            const button = clicked.closest(
-              'button, input[type="submit"], input[type="button"], a, [role="button"]',
-            );
-
-            if (!button) return;
-            if (!isTargetButton(button)) return;
-            if (isDisabled(button)) return;
-
-            const form = button.closest("form");
-
-            if (!isValidForm(form)) return;
-
-            sendLeadConversion();
-          },
-          true,
-        );
+        window.addEventListener("alpha:lead-submit-success", function () {
+          sendLeadConversion();
+        });
       })();
     </script>
+
+    <script type="module" crossorigin src="/assets/index-B_UuTWA5.js"></script>
+    <link
+      rel="modulepreload"
+      crossorigin
+      href="/assets/rolldown-runtime-Bh1tDfsg.js"
+    />
+    <link
+      rel="modulepreload"
+      crossorigin
+      href="/assets/vendor-gsap-CZkpitSS.js"
+    />
+    <link
+      rel="modulepreload"
+      crossorigin
+      href="/assets/vendor-icons-CYsYxZ9k.js"
+    />
+    <link
+      rel="modulepreload"
+      crossorigin
+      href="/assets/vendor-react-Cvg_4G3s.js"
+    />
+    <link
+      rel="preload"
+      as="style"
+      href="/assets/index-wk5-Y1rq.css"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="/assets/index-wk5-Y1rq.css" />
+    </noscript>
   </head>
+
   <body>
     <!-- Skip link acessibilidade -->
     <a href="#main-content" class="skip-link">Ir para o conteúdo principal</a>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
