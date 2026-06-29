@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import InfinitMarquee from './components/InfiniteMarquee'
@@ -44,6 +45,7 @@ export default function App() {
       </main>
 
       <WhatsAppFloat phone={WA_NUMBER} message={WA_MSG} />
+      <Analytics />
     </>
   )
 }
